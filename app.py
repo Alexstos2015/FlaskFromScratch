@@ -103,6 +103,10 @@ def login():
 
     return render_template('login.html')
 
+def is_logged_in(f):
+    @wraps(f)
+
+
 @app.route('/logout')
 def logout():
     session.clear()
@@ -111,6 +115,7 @@ def logout():
 
 
 @app.route('/dashboard')
+@is_logged_in
 def dashboard():
     return render_template('dashboard.html')
 
